@@ -3,7 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id "io.freefair.lombok" version "5.2.1"
 	id 'java'
-	id 'war'
+	//id 'war'
 }
 
 group = 'com.crud'
@@ -27,7 +27,7 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:11.18.12'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' // war for Tomcat
 }
 
 test {
