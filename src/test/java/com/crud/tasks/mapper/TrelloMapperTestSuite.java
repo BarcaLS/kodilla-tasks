@@ -25,9 +25,9 @@ class TrelloMapperTestSuite {
         TrelloListDto trelloListDto2 = new TrelloListDto("1", "something1", false);
         TrelloListDto trelloListDto3 = new TrelloListDto("2", "something2", true);
         TrelloListDto trelloListDto4 = new TrelloListDto("3", "something3", false);
-        TrelloBoardDto trelloBoardDto1 = new TrelloBoardDto("0", "name0", new ArrayList<>(Arrays.asList(trelloListDto1)));
-        TrelloBoardDto trelloBoardDto2 = new TrelloBoardDto("0", "name0", new ArrayList<>(Arrays.asList(trelloListDto2,trelloListDto3,trelloListDto4)));
-        List<TrelloBoardDto> trelloBoardsDto = new ArrayList<>(Arrays.asList(trelloBoardDto1,trelloBoardDto2));
+        TrelloBoardDto trelloBoardDto1 = new TrelloBoardDto("0", "name0", List.of(trelloListDto1));
+        TrelloBoardDto trelloBoardDto2 = new TrelloBoardDto("1", "name1", List.of(trelloListDto2,trelloListDto3,trelloListDto4));
+        List<TrelloBoardDto> trelloBoardsDto = List.of(trelloBoardDto1,trelloBoardDto2);
 
         // When
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoards(trelloBoardsDto);
@@ -43,15 +43,15 @@ class TrelloMapperTestSuite {
         TrelloList trelloList2 = new TrelloList("1", "something1", false);
         TrelloList trelloList3 = new TrelloList("2", "something2", true);
         TrelloList trelloList4 = new TrelloList("3", "something3", false);
-        TrelloBoard trelloBoard1 = new TrelloBoard("0", "name0", new ArrayList<>(Arrays.asList(trelloList1)));
-        TrelloBoard trelloBoard2 = new TrelloBoard("0", "name0", new ArrayList<>(Arrays.asList(trelloList2,trelloList3,trelloList4)));
-        List<TrelloBoard> trelloBoards = new ArrayList<>(Arrays.asList(trelloBoard1,trelloBoard2));
+        TrelloBoard trelloBoard1 = new TrelloBoard("0", "name0", List.of(trelloList1));
+        TrelloBoard trelloBoard2 = new TrelloBoard("1", "name1", List.of(trelloList2,trelloList3,trelloList4));
+        List<TrelloBoard> trelloBoards = List.of(trelloBoard1,trelloBoard2);
 
         // When
         List<TrelloBoardDto> trelloBoardsDto = trelloMapper.mapToBoardsDto(trelloBoards);
 
         // Then
-        assertEquals(2, trelloBoards.size());
+        assertEquals(2, trelloBoardsDto.size());
     }
 
     @Test
