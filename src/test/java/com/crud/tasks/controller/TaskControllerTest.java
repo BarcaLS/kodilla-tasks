@@ -37,7 +37,7 @@ public class TaskControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getTasks")
+                        .get("/v1/tasks")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200))
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)))
@@ -58,7 +58,7 @@ public class TaskControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getTask?taskId=0")
+                        .get("/v1/tasks/0")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(0)))
@@ -74,7 +74,7 @@ public class TaskControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .delete("/v1/task/deleteTask?taskId=0")
+                        .delete("/v1/tasks/0")
                         .contentType(MediaType.APPLICATION_JSON));
         verify(taskController, times(1)).deleteTask(0L);
     }
@@ -91,7 +91,7 @@ public class TaskControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .put("/v1/task/updateTask")
+                        .put("/v1/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonContent))
@@ -112,7 +112,7 @@ public class TaskControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/v1/task/createTask")
+                        .post("/v1/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonContent));
